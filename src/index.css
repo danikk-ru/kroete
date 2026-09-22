@@ -2,48 +2,47 @@
 
 @theme {
   /* ---- Brand palette ---- */
-  --color-black: #080808;
-  --color-graphite: #1a1a1a;
-  --color-graphite-2: #232323;
-  --color-off: #ededE6;
-  --color-lime: #dfff00;
-  --color-lime-dim: #b8d400;
+  --color-cream: #efeee7;
+  --color-paper: #e6e6db;
+  --color-forest: #19372b;
+  --color-dark: #10241c;
+  --color-deep: #081711;
+  --color-sage: #9cae9b;
+  --color-line: #c6cabd;
 
   /* ---- Type ---- */
-  --font-display: "Unbounded", "Arial Narrow", sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Manrope", "Arial Narrow", sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
 
   /* ---- Layout ---- */
   --breakpoint-xs: 420px;
   --container-content: 1440px;
 
-  --animate-marquee: marquee 32s linear infinite;
-  --animate-fade-up: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-spin-slow: spin 18s linear infinite;
+  --animate-marquee: marquee 34s linear infinite;
 }
 
 @layer base {
   * {
-    @apply border-off/10;
+    @apply border-line;
   }
 
   html {
     @apply scroll-smooth;
-    color-scheme: dark;
+    scroll-padding-top: 78px;
+    color-scheme: light;
   }
 
   body {
-    @apply bg-black text-off font-body antialiased;
-    font-feature-settings: "ss01" on, "cv01" on;
+    @apply bg-cream text-forest font-body antialiased;
   }
 
   ::selection {
-    @apply bg-lime text-black;
+    @apply bg-sage/60 text-forest;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-lime);
+    outline: 2px solid var(--color-sage);
     outline-offset: 3px;
   }
 
@@ -57,25 +56,10 @@
 }
 
 @layer utilities {
-  .text-stroke-off {
-    -webkit-text-stroke: 1px var(--color-off);
-    color: transparent;
-  }
-
-  .noise::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.05;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
   .grid-overlay {
     background-image:
-      linear-gradient(to right, rgba(237, 237, 230, 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(237, 237, 230, 0.06) 1px, transparent 1px);
+      linear-gradient(to right, rgba(16, 36, 28, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(16, 36, 28, 0.06) 1px, transparent 1px);
     background-size: 64px 64px;
   }
 
@@ -89,15 +73,9 @@
   to { transform: translateX(-50%); }
 }
 
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes slowzoom {
+  from { transform: scale(1.09); }
+  to { transform: scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {

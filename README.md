@@ -6,44 +6,43 @@ Framer Motion.
 
 ## Design decisions
 
-- **Type system.** [Unbounded](https://fonts.google.com/specimen/Unbounded)
-  carries the KROETE wordmark and all headlines — it's wide, geometric, and
-  reads as "industrial performance" without tipping into gaming/futuristic
-  cliché. [Inter](https://fonts.google.com/specimen/Inter) handles body
-  copy for readability. [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono)
-  is used exclusively for technical labels (nav items, category tags,
-  coordinates, form labels) to reinforce the "camera/flight instrumentation"
-  feel.
-- **Palette.** Strict to the brief: `#080808` black, `#1A1A1A` graphite,
-  `#EDEDE6` off-white, `#DFFF00` lime — lime is reserved for accents,
-  active states, and the monogram, never large fills.
-- **Monogram.** A single angular "K" glyph (`src/components/Monogram.tsx`)
-  with two recessed notches in the negative space — a restrained,
-  abstract nod to the toad motif (wide-set eyes) rather than an illustrated
-  toad.
+- **Type system.** [Manrope](https://fonts.google.com/specimen/Manrope)
+  carries the wordmark and all display headlines — geometric but warm,
+  it reads as editorial/cinematic rather than corporate.
+  [DM Sans](https://fonts.google.com/specimen/DM+Sans) handles body copy.
+  [DM Mono](https://fonts.google.com/specimen/DM+Mono) is used exclusively
+  for technical labels (nav, eyebrows, category tags, form labels) —
+  a quiet "instrumentation" layer under the editorial type.
+- **Palette.** Forest/cream instead of a dark UI: `#EFEEE7` cream,
+  `#E6E6DB` paper (alternating section background), `#19372B` forest
+  (primary text/accent), `#10241C` dark and `#081711` deep (hero/contact
+  backgrounds), `#9CAE9B` sage (muted accent, second headline lines).
+  Light, editorial, and nature-toned rather than an "industrial" dark UI.
+- **Wordmark.** A lowercase text mark, `kroete.`, with the trailing period
+  colored sage — a small, deliberate accent repeated in the nav and the
+  oversized footer signature (`src/components/Wordmark.tsx`).
 - **No fake portfolio.** Per the brief, no real clients, awards, or
   completed productions are implied anywhere. Project cards use a
   generated abstract visual (category-coded line art over a technical
-  grid, labeled "MEDIA PENDING") instead of stock photography or broken
-  image links, so the layout demonstrates the intended editorial grid
-  without pretending to be real work. Founder cards are explicitly
-  labeled "PORTRAIT PENDING."
+  grid) instead of stock photography or broken image links, explicitly
+  labeled "VISUAL CONCEPT" and captioned below the grid as placeholder.
+  Founder cards are explicitly labeled placeholder portraits.
 - **Contact form is functional, not decorative.** It builds a `mailto:`
   link from the filled fields and hands off to the visitor's email
   client. This works today with zero backend, but is not a real lead
   pipeline — see "Wiring up the contact form" below.
-- **Motion.** Scroll-triggered reveals, an accordion services list, filterable
-  portfolio grid, and a cinematic mobile menu, all built with Framer Motion.
-  Every animated component reads `prefers-reduced-motion` (via
-  `useReducedMotion`) and renders statically for users who've asked for
-  reduced motion.
+- **Motion.** A looping marquee ticker, scroll-triggered reveals, a
+  filterable portfolio grid, and a full-screen mobile menu, all built
+  with Framer Motion. Every animated component reads
+  `prefers-reduced-motion` (via `useReducedMotion`) and renders
+  statically for users who've asked for reduced motion.
 
 ## Project structure
 
 ```
 src/
   content/
-    site.ts       # nav, brand, hero copy, about copy, contact info, footer/legal
+    site.ts       # nav, brand, hero/intro/interlude/about/contact copy, footer/legal
     services.ts   # the 4 service offerings
     projects.ts   # portfolio entries (all currently placeholder=true)
   components/      # one file per section + shared visual primitives
@@ -58,7 +57,6 @@ description.
 ### 1. Contact details (`src/content/site.ts`)
 - `contact.email` — currently `hello@kroete.group`
 - `contact.instagram` — handle + URL
-- `contact.location`
 - `brand.location.note`, `brand.founded`
 
 ### 2. Legal (`src/content/site.ts` → `footerLegal`)
@@ -71,29 +69,28 @@ e-recht24 can generate compliant text once the legal entity is finalized).
 Each entry has `placeholder: true`. As real productions are ready:
 - Set `placeholder: false`.
 - Add `image` (a poster/still, e.g. `/work/project-01.jpg` in `public/`)
-  and/or `video` (an mp4 or hosted embed — the current card only wires up
-  a still + play icon affordance; extending it to open a lightbox/video
-  is a small follow-up in `src/components/Work.tsx`).
+  and/or `video`.
 - Recommended still specs: 1600×2000px (4:5), JPG/WebP, optimized (~200KB).
 - Once an entry has `image` set, swap `<PlaceholderVisual>` for a real
-  `<img>` in `Work.tsx`'s `ProjectCard` — left as a manual step so no
-  broken `<img>` tags ship before real media exists.
+  `<img>`/background-image in `Work.tsx`'s `ProjectCard` — left as a
+  manual step so no broken `<img>` tags ship before real media exists.
+- Title is `string[]` (1–2 lines) to control the stacked poetic headline
+  layout, e.g. `["After", "hours."]`.
 
-### 4. Hero showreel (`src/content/site.ts` → `hero`)
-Set `hero.video` to a path under `public/video/` (e.g.
-`/video/hero-reel.mp4`) and optionally `hero.poster` to a still frame.
-Until then, the hero uses a generated grid/line-art backdrop — this is a
-deliberate fallback, not a bug.
+### 4. Hero & about imagery (`src/content/site.ts`)
+Set `hero.image` (and/or `hero.video`) and `about.image` to paths under
+`public/` once real photography/footage exists. Until then, both use a
+generated forest-toned line-art backdrop — this is a deliberate fallback,
+not a bug.
 
 ### 5. Founders (`src/content/site.ts` → `about.founders`)
-Replace `name`/placeholder `note` once names and short bios are agreed.
-For portraits, replace the placeholder block in `src/components/About.tsx`
-(`PORTRAIT PENDING` badge + index number) with an `<img>` per founder —
-recommended 3:4 portrait crop, consistent lighting/background across both.
+Replace the placeholder `note` once names and short bios are agreed. The
+compact founder row in `src/components/About.tsx` can be swapped for real
+portraits (recommended 1:1 or 3:4 crop) once available.
 
 ### 6. Domain & social (`src/content/site.ts` → `brand`, `socials`)
-`brand.domain` is used in the footer and `index.html`'s canonical URL —
-update if `kroete.group` isn't secured.
+`brand.domain` is used in `index.html`'s canonical URL — update if
+`kroete.group` isn't secured.
 
 ## Wiring up the contact form
 
@@ -122,7 +119,8 @@ npm run lint       # oxlint
 ## Browser/device support
 
 Responsive from ~360px mobile up through ultrawide desktop. Tested at
-390px (mobile), and 1440px (desktop) viewports. The hero headline sizes
-itself fluidly per line length so long words don't overflow narrow
-screens — see the `fontSize` calc in `src/components/Hero.tsx` if you
-change the headline copy to something significantly longer.
+390px (mobile) and 1440px (desktop) viewports. The hero headline (and the
+footer/interlude big-type moments) size themselves fluidly per line
+length so long words don't overflow narrow screens — see the `fontSize`
+calc in `src/components/Hero.tsx` if you change the headline copy to
+something significantly longer.

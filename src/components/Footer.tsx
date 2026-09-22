@@ -1,72 +1,43 @@
-import type { ReactNode } from "react";
-import { Monogram } from "./Monogram";
+import { Wordmark } from "./Wordmark";
 import { nav, brand, socials, footerLegal } from "../content/site";
 
 export function Footer() {
+  const allLinks = [...nav.links, { label: "Contact", href: "#contact" }];
+
   return (
-    <footer className="relative border-t border-off/10 bg-black pb-8 pt-16 sm:pt-20">
+    <footer className="border-t border-forest bg-deep pb-7 pt-12 text-cream">
       <div className="mx-auto max-w-content px-5 sm:px-8 lg:px-12">
-        <div className="flex flex-col gap-12 border-b border-off/10 pb-12 lg:flex-row lg:items-start lg:justify-between">
-          <div className="max-w-sm">
-            <a href="#top" className="flex items-center gap-2.5 font-display text-lg font-semibold tracking-[0.2em] text-off">
-              <Monogram className="h-8 w-8 text-lime" />
-              {brand.name}
+        <div className="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
+          <a href="#top" aria-label="KROETE, home">
+            <Wordmark className="text-[68px] leading-[0.8] sm:text-[110px] lg:text-[170px]" />
+          </a>
+
+          <div className="flex flex-wrap gap-4 font-mono text-[10px] uppercase tracking-[0.06em]">
+            {allLinks.map((link) => (
+              <a key={link.href} href={link.href} className="transition-opacity hover:opacity-60">
+                {link.label}
+              </a>
+            ))}
+            {socials.map((s) => (
+              <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="transition-opacity hover:opacity-60">
+                {s.label} ↗
+              </a>
+            ))}
+            <a href={footerLegal.impressum.href} className="transition-opacity hover:opacity-60">
+              {footerLegal.impressum.label}
             </a>
-            <p className="mt-4 font-body text-sm leading-relaxed text-off/50">
-              Independent FPV &amp; creative media production studio. {brand.location.city} —{" "}
-              {brand.location.note}.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
-            <FooterColumn title="Navigate">
-              {nav.map((item) => (
-                <a key={item.href} href={item.href} className="block py-1 text-off/60 transition-colors hover:text-lime">
-                  {item.label}
-                </a>
-              ))}
-            </FooterColumn>
-
-            <FooterColumn title="Social">
-              {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="block py-1 text-off/60 transition-colors hover:text-lime"
-                >
-                  {s.label}
-                  {"note" in s && s.note ? ` (${s.note})` : ""}
-                </a>
-              ))}
-            </FooterColumn>
-
-            <FooterColumn title="Legal">
-              <a href={footerLegal.impressum.href} className="block py-1 text-off/60 transition-colors hover:text-lime">
-                {footerLegal.impressum.label}
-              </a>
-              <a href={footerLegal.datenschutz.href} className="block py-1 text-off/60 transition-colors hover:text-lime">
-                {footerLegal.datenschutz.label}
-              </a>
-            </FooterColumn>
+            <a href={footerLegal.datenschutz.href} className="transition-opacity hover:opacity-60">
+              {footerLegal.datenschutz.label}
+            </a>
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 pt-6 font-mono text-[10px] tracking-widest text-off/35 sm:flex-row sm:items-center sm:justify-between">
-          <span>© {new Date().getFullYear()} {brand.fullName}. ALL RIGHTS RESERVED.</span>
-          <span>{brand.domain.toUpperCase()} — GERMANY</span>
+        <div className="mt-9 flex flex-col gap-2.5 border-t border-forest pt-6 font-mono text-[9px] uppercase leading-relaxed tracking-[0.02em] text-sage sm:flex-row sm:justify-between">
+          <span>© {new Date().getFullYear()} {brand.fullName}</span>
+          <span>{brand.tagline}</span>
+          <span>Demo — add legal notice &amp; privacy policy before launch</span>
         </div>
       </div>
     </footer>
-  );
-}
-
-function FooterColumn({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <div>
-      <p className="mb-3 font-mono text-[10px] tracking-widest text-off/35">{title.toUpperCase()}</p>
-      <div className="font-body text-sm">{children}</div>
-    </div>
   );
 }

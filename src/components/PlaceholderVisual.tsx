@@ -22,25 +22,17 @@ const paths: Record<Category, string> = {
 export function PlaceholderVisual({ category, index, className }: PlaceholderVisualProps) {
   const path = paths[category];
   return (
-    <div
-      className={`relative overflow-hidden bg-graphite grid-overlay ${className ?? ""}`}
-      aria-hidden="true"
-    >
-      <span className="absolute -bottom-6 -left-2 font-display text-[7rem] font-bold leading-none text-off/[0.05] xs:text-[9rem]">
+    <div className={`relative overflow-hidden bg-dark ${className ?? ""}`} aria-hidden="true">
+      <div className="absolute inset-0 opacity-[0.1]" style={{ filter: "invert(1)" }}>
+        <div className="grid-overlay h-full w-full" />
+      </div>
+      <span className="absolute -bottom-6 -left-2 font-display text-[7rem] font-bold leading-none text-cream/[0.06] xs:text-[9rem]">
         {String(index).padStart(2, "0")}
       </span>
-      <svg
-        viewBox="0 0 320 160"
-        preserveAspectRatio="none"
-        className="absolute inset-0 h-full w-full opacity-40"
-      >
-        <path d={path} fill="none" stroke="var(--color-lime)" strokeWidth="1.2" />
+      <svg viewBox="0 0 320 160" preserveAspectRatio="none" className="absolute inset-0 h-full w-full opacity-50">
+        <path d={path} fill="none" stroke="var(--color-sage)" strokeWidth="1.2" />
       </svg>
-      <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4 font-mono text-[10px] tracking-widest text-off/40">
-        <span>{category.toUpperCase()}</span>
-        <span>MEDIA PENDING</span>
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-dark/40" />
     </div>
   );
 }

@@ -4,66 +4,108 @@
  * confirmed brand details before launch. See README.md for the full list.
  */
 
-export const nav = [
-  { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-] as const;
+export const nav = {
+  links: [
+    { label: "Work", href: "#work" },
+    { label: "Services", href: "#services" },
+    { label: "Studio", href: "#about" },
+  ],
+  eyebrow: "Independent production studio",
+  cta: { label: "Let's talk ↗", href: "#contact" },
+} as const;
 
 export const brand = {
   name: "KROETE",
   fullName: "KROETE Group",
-  tagline: "FPV & Creative Media Production",
+  tagline: "FPV & Creative Production",
   domain: "kroete.group",
   founded: "2024",
   location: { city: "Germany", note: "Studio location TBC" },
 };
 
 export const hero = {
-  eyebrow: "FPV / AERIAL / MOTORSPORT / FILM",
-  headlineLines: ["DIFFERENT", "PERSPECTIVES."],
-  sub: "An independent production studio building cinematic FPV, automotive, and commercial films from the ground up — and everywhere above it.",
-  ctaPrimary: { label: "View Work", href: "#work" },
-  ctaSecondary: { label: "Start a Project", href: "#contact" },
+  eyebrow: "FPV & CREATIVE PRODUCTION / GERMANY",
+  headlineLines: ["See things", "differently."],
+  sub: "Independent creative production for movement, atmosphere, and the moments in between.",
+  cta: { label: "Explore work", href: "#work" },
+  footTag: "KROETE / MOTION & MEDIA",
+  footScroll: "SCROLL TO EXPLORE ↓",
   /**
-   * Optional showreel background. Drop an .mp4 into /public/video/ and set
-   * the path here (e.g. "/video/hero-reel.mp4"). Leave undefined to use
-   * the generative fallback background — see README.md for specs.
+   * Optional showreel background image/video. Drop a file into public/ and
+   * set the path here (e.g. "/video/hero-reel.mp4" or "/img/hero.jpg").
+   * Leave undefined to use the generative fallback backdrop.
    */
+  image: undefined as string | undefined,
   video: undefined as string | undefined,
-  poster: undefined as string | undefined,
+};
+
+export const marquee = [
+  "FPV CINEMATOGRAPHY",
+  "AERIAL PRODUCTION",
+  "AUTOMOTIVE & MOTORSPORT",
+  "CREATIVE FILM",
+];
+
+export const intro = {
+  eyebrow: "01 / OUR PERSPECTIVE",
+  headingLines: ["Beyond the", "expected", "frame."],
+  paragraphs: [
+    "The best images make you feel like you're there. We pair technical precision with cinematic intuition to create perspectives that move people.",
+    "From flowing FPV sequences to considered commercial filmmaking, every shot is built around the story — never the gear alone.",
+  ],
+  thinRow: ["INDEPENDENT BY DESIGN", "BASED IN GERMANY ↗"],
+};
+
+export const workIntro = {
+  eyebrow: "02 / SELECTED DIRECTIONS",
+  headingLines: ["Images in", "motion."],
+  description:
+    "Visual directions that reflect the kinds of projects we want to create. Real commissioned work will take their place.",
+};
+
+export const interlude = {
+  headingLines: ["Made for", "the moment."],
+  eyebrowLines: ["MOTION / MEDIA / PRODUCTION", "EVERY PERSPECTIVE HAS A STORY ↗"],
+};
+
+export const servicesIntro = {
+  eyebrow: "03 / WHAT WE DO",
+  headingLines: ["Crafted", "to move."],
+  description:
+    "From the first creative idea to the final frame, we shape each production around the subject, audience, and feeling.",
 };
 
 export const about = {
-  eyebrow: "ABOUT",
-  heading: "Built by pilots. Run like a studio.",
+  eyebrow: "04 / THE STUDIO",
+  headingLines: ["Curiosity", "is our", "compass."],
   paragraphs: [
-    "KROETE is an independent creative production studio based in Germany, formed around a simple belief: the most compelling footage comes from perspectives nobody else is flying, driving, or standing in.",
-    "We work at the intersection of FPV piloting, automotive culture, and commercial filmmaking — combining technical flight precision with a cinematographer's eye for pace, light, and story.",
-    "We're early. This is a young studio built by two founders who fly, shoot, and edit everything themselves — not a large production house. What we lack in scale, we make up for in obsession over the shot.",
+    "KROETE is an emerging independent FPV and creative production studio based in Germany, built around an obsession with perspective, movement, and detail.",
+    "We bring cinematic ambition together with a practical technical mindset. Small and flexible by design, open to projects that challenge the usual frame.",
   ],
+  tags: ["CURIOSITY", "PRECISION", "MOVEMENT", "PERSPECTIVE"],
+  imageCaption: "ALWAYS LOOKING CLOSER ↗",
+  image: undefined as string | undefined,
+  endHeadingLines: ["Different angles.", "Lasting feeling."],
+  endEyebrow: "KROETE / INDEPENDENT PRODUCTION ↗",
   founders: [
     {
-      name: "Founder One",
       role: "FPV Pilot / Director of Photography",
-      note: "Name & bio pending — placeholder portrait slot below.",
+      note: "Name & bio pending — placeholder portrait.",
     },
     {
-      name: "Founder Two",
       role: "Producer / Editor",
-      note: "Name & bio pending — placeholder portrait slot below.",
+      note: "Name & bio pending — placeholder portrait.",
     },
   ],
 };
 
 export const contact = {
-  eyebrow: "CONTACT",
-  heading: "Let's build something worth watching.",
-  sub: "Tell us about your project, timeline, and location. We'll get back to you within a few days.",
+  eyebrow: "05 / GET IN TOUCH",
+  headingLines: ["Let's make", "something."],
+  sub: "A film, a moving image, a different kind of idea — tell us what you have in mind.",
   email: "hello@kroete.group",
-  instagram: { handle: "@kroete.group", url: "https://instagram.com/kroete.group" },
-  location: "Germany — available for travel",
+  instagram: { handle: "Instagram", url: "https://instagram.com/kroete.group" },
+  demoNote: "Proposed contact details. Confirm domain, inbox, and social handle before launch.",
   formEndpointNote:
     "Replace with a real backend (Formspree, Resend, or a custom API route) before launch — see README.md.",
 };
@@ -75,5 +117,4 @@ export const footerLegal = {
 
 export const socials = [
   { label: "Instagram", href: "https://instagram.com/kroete.group" },
-  { label: "YouTube", href: "#", note: "TBC" },
 ] as const;

@@ -2,36 +2,27 @@ export type Service = {
   index: string;
   title: string;
   description: string;
-  capabilities: string[];
 };
 
 export const services: Service[] = [
   {
     index: "01",
-    title: "FPV & Aerial Production",
-    description:
-      "High-speed FPV cinematography and precision aerial coverage for productions that need motion no traditional rig can capture.",
-    capabilities: ["FPV cinewhoop & long-range", "Drone photography", "Flight choreography", "Location scouting"],
+    title: "FPV cinematography",
+    description: "Immersive camera movement, intimate tracking, and dynamic perspectives through FPV.",
   },
   {
     index: "02",
-    title: "Automotive & Motorsport",
-    description:
-      "Dynamic vehicle films and track-day coverage built around speed, precision, and the details enthusiasts actually notice.",
-    capabilities: ["Dynamic vehicle films", "Track & circuit coverage", "Chase & tracking shots", "Reveal films"],
+    title: "Aerial production",
+    description: "Expressive aerial imagery for landscapes, environments, experiences, and brands.",
   },
   {
     index: "03",
-    title: "Commercial & Branded Content",
-    description:
-      "Branded films and social content for companies who want production value without a traditional agency overhead.",
-    capabilities: ["Brand & product films", "Social-first content", "Event coverage", "Campaign concepting"],
+    title: "Automotive & motorsport",
+    description: "Movement-led filmmaking for cars, drivers, teams, and automotive culture.",
   },
   {
     index: "04",
-    title: "Creative Film Production",
-    description:
-      "Independent and collaborative creative projects — where the brief is open and the only goal is a striking result.",
-    capabilities: ["Short-form narrative", "Music & art collaborations", "Concept development", "Full post-production"],
+    title: "Edit & creative",
+    description: "Thoughtful storytelling, editing, and content built for its intended audience.",
   },
 ];

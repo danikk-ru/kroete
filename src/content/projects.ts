@@ -2,8 +2,11 @@ export type Category = "FPV" | "Automotive" | "Motorsport" | "Commercial" | "Fil
 
 export type Project = {
   id: string;
-  title: string;
+  /** 1–2 lines, rendered as a stacked poetic title (e.g. ["After", "hours."]). */
+  title: string[];
   category: Category;
+  /** Short 2–3 word slash-separated mood line, e.g. "MOTION / DETAIL / SPEED". */
+  descriptor: string;
   year: string;
   role: string;
   location: string;
@@ -33,8 +36,9 @@ export const categories: Array<Category | "All"> = [
 export const projects: Project[] = [
   {
     id: "proto-01",
-    title: "Prototype Run",
+    title: ["After", "hours."],
     category: "Automotive",
+    descriptor: "MOTION / DETAIL / SPEED",
     year: "2024",
     role: "FPV / Direction",
     location: "Germany",
@@ -42,8 +46,9 @@ export const projects: Project[] = [
   },
   {
     id: "proto-02",
-    title: "Circuit Study",
+    title: ["Above", "it all."],
     category: "Motorsport",
+    descriptor: "SPACE / FLOW / PERSPECTIVE",
     year: "2024",
     role: "Aerial Coverage",
     location: "Germany",
@@ -51,8 +56,9 @@ export const projects: Project[] = [
   },
   {
     id: "proto-03",
-    title: "Vertical Line",
+    title: ["No fixed", "perspective."],
     category: "FPV",
+    descriptor: "IMAGE / STORY / FEELING",
     year: "2024",
     role: "FPV / Editing",
     location: "TBC",
@@ -60,8 +66,9 @@ export const projects: Project[] = [
   },
   {
     id: "proto-04",
-    title: "Brand Reel Concept",
+    title: ["Brand", "in motion."],
     category: "Commercial",
+    descriptor: "IDEA / CRAFT / CLARITY",
     year: "2024",
     role: "Concept / Production",
     location: "TBC",
@@ -69,8 +76,9 @@ export const projects: Project[] = [
   },
   {
     id: "proto-05",
-    title: "Short Study No.1",
+    title: ["A quieter", "frame."],
     category: "Film",
+    descriptor: "LIGHT / PACE / STILLNESS",
     year: "2024",
     role: "Direction / Editing",
     location: "TBC",
@@ -78,8 +86,9 @@ export const projects: Project[] = [
   },
   {
     id: "proto-06",
-    title: "Night Runs",
+    title: ["Night", "runs."],
     category: "Automotive",
+    descriptor: "SPEED / SHADOW / SOUND",
     year: "2024",
     role: "FPV / Direction",
     location: "TBC",
