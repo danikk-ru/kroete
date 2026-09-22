@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Wordmark } from "./Wordmark";
+import { Mark } from "./Mark";
 import { nav } from "../content/site";
 
 export function Nav() {
@@ -19,7 +20,10 @@ export function Nav() {
     <header className="fixed inset-x-0 top-0 z-50 h-[78px] border-b border-line bg-cream/92 backdrop-blur-xl">
       <div className="mx-auto flex h-full max-w-content items-center justify-between px-5 sm:px-8 lg:px-12">
         <a href="#top" className="flex items-center gap-6" aria-label="KROETE, home">
-          <Wordmark className="text-[28px]" />
+          <span className="flex items-center gap-2.5">
+            <Mark className="h-9 w-auto" />
+            <Wordmark className="text-[28px]" />
+          </span>
           <span className="hidden border-l border-line pl-5 font-mono text-[10px] uppercase tracking-[0.11em] text-forest/60 md:inline">
             {nav.eyebrow}
           </span>

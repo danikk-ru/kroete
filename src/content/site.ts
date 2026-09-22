@@ -104,7 +104,7 @@ export const contact = {
   headingLines: ["Let's make", "something."],
   sub: "A film, a moving image, a different kind of idea — tell us what you have in mind.",
   email: "hello@kroete.media",
-  instagram: { handle: "Instagram", url: "https://instagram.com/kroete.group" },
+  instagram: { handle: "Instagram", url: "https://instagram.com/kroetemedia" },
   demoNote: "Proposed contact details. Confirm domain, inbox, and social handle before launch.",
   formEndpointNote:
     "Replace with a real backend (Formspree, Resend, or a custom API route) before launch — see README.md.",
@@ -116,5 +116,5 @@ export const footerLegal = {
 };
 
 export const socials = [
-  { label: "Instagram", href: "https://instagram.com/kroete.group" },
+  { label: "Instagram", href: "https://instagram.com/kroetemedia" },
 ] as const;

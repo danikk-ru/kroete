@@ -1,4 +1,5 @@
 import { Wordmark } from "./Wordmark";
+import { Mark } from "./Mark";
 import { nav, brand, socials, footerLegal } from "../content/site";
 
 export function Footer() {
@@ -8,7 +9,8 @@ export function Footer() {
     <footer className="border-t border-forest bg-deep pb-7 pt-12 text-cream">
       <div className="mx-auto max-w-content px-5 sm:px-8 lg:px-12">
         <div className="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
-          <a href="#top" aria-label="KROETE, home">
+          <a href="#top" aria-label="KROETE, home" className="flex items-center gap-3 sm:gap-5">
+            <Mark variant="dark" className="h-[46px] w-auto sm:h-[74px] lg:h-[112px]" />
             <Wordmark className="text-[68px] leading-[0.8] sm:text-[110px] lg:text-[170px]" />
           </a>
 
