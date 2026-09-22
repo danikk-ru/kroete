@@ -55,7 +55,7 @@ description.
 ## Replacing placeholder content
 
 ### 1. Contact details (`src/content/site.ts`)
-- `contact.email` — currently `hello@kroete.group`
+- `contact.email` — currently `hello@kroete.media`
 - `contact.instagram` — handle + URL
 - `brand.location.note`, `brand.founded`
 
@@ -90,7 +90,7 @@ portraits (recommended 1:1 or 3:4 crop) once available.
 
 ### 6. Domain & social (`src/content/site.ts` → `brand`, `socials`)
 `brand.domain` is used in `index.html`'s canonical URL — update if
-`kroete.group` isn't secured.
+`kroete.media` isn't secured.
 
 ## Wiring up the contact form
 

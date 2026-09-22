@@ -16,9 +16,9 @@ export const nav = {
 
 export const brand = {
   name: "KROETE",
-  fullName: "KROETE Group",
+  fullName: "KROETE Media",
   tagline: "FPV & Creative Production",
-  domain: "kroete.group",
+  domain: "kroete.media",
   founded: "2024",
   location: { city: "Germany", note: "Studio location TBC" },
 };
@@ -103,7 +103,7 @@ export const contact = {
   eyebrow: "05 / GET IN TOUCH",
   headingLines: ["Let's make", "something."],
   sub: "A film, a moving image, a different kind of idea — tell us what you have in mind.",
-  email: "hello@kroete.group",
+  email: "hello@kroete.media",
   instagram: { handle: "Instagram", url: "https://instagram.com/kroete.group" },
   demoNote: "Proposed contact details. Confirm domain, inbox, and social handle before launch.",
   formEndpointNote:
